@@ -25,10 +25,8 @@ Snow poles are detected from LiDAR point clouds or LiDAR-derived representations
 ### 2. Georeferencing of Detected Poles
 Detected poles are associated with known **global (map-level) pole coordinates** from a georeferenced database.
 
-### 3. Vehicle Pose Estimation (via Poles)
-Vehicle position is estimated by matching detected poles with their known geospatial locations, enabling localization in GNSS-challenged scenarios.
 
-### 4. Evaluation Under Nordic Conditions
+### 3. Evaluation Under Nordic Conditions
 The framework is validated using **real-world Nordic winter datasets**, including snow-covered roads, reduced visibility, and harsh weather conditions.
 
 ---
@@ -64,7 +62,7 @@ snowpole_geolocalization/
 ---
 
 
-### 5. Data Description
+### 4. Data Description
 
 - **LiDAR data** collected along Norwegian highways  
 - **Georeferenced snow pole locations** obtained from infrastructure-level mapping  
@@ -74,7 +72,7 @@ snowpole_geolocalization/
 
 ---
 
-### 6. Reproducibility
+### 5. Reproducibility
 
 A Conda environment is provided to ensure reproducibility of the experiments.
 
@@ -82,7 +80,7 @@ A Conda environment is provided to ensure reproducibility of the experiments.
 conda env create -f environment.yml
 conda activate snowpole_geolocalization
 ```
-### 7. Related Publications
+### 6. Related Publications
 
 If you use this repository, please cite the following works.
 
@@ -106,18 +104,18 @@ A Pole Detection and Geospatial Localization Framework Using LiDAR–GNSS Data F
 Durga Prasad Bavirisetti, Gabriel Hanssen Kiss, Frank Lindseth
 27th International Conference on Information Fusion (FUSION 2024)
 
-### 8. Project Context & Funding
+### 7. Project Context & Funding
 
 This research was conducted as part of the project:
 
 “Machine Sensible Infrastructure under Nordic Conditions”
 Project Number: 333875
 
-### 9. Citation
+### 8. Citation
 
 If you use this code, dataset references, or methodological ideas, please cite the corresponding publications listed above.
 
-### 10. Contact
+### 9. Contact
 
 Durga Prasad Bavirisetti
 Associate Professor – AI & Computer Vision
