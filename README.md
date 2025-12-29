@@ -1,21 +1,31 @@
 # Snow Pole Geo-Localization Framework
 
-This repository focuses **exclusively on snow pole geo-localization**, which is a **core sub-module** of a broader **vehicle localization framework using georeferenced snow poles and LiDAR data**. The overall objective is to enable reliable vehicle localization in **GNSS-limited or GNSS-denied environments**, particularly under **harsh Nordic winter conditions**.
+This repository focuses **exclusively on snow pole geo-localization**, a **core sub-module** of a broader **vehicle localization framework using georeferenced snow poles and LiDAR data**. The objective is to enable reliable vehicle localization in **GNSS-limited or GNSS-denied environments**, particularly under **harsh Nordic winter conditions**.
 
 Snow poles are treated as **machine-perceivable infrastructure landmarks**, allowing vehicles to estimate their position when GNSS signals are unreliable or unavailable.
 
 ---
 
-## 📌 Scope of This Repository
+## Background and Motivation
 
-> ⚠️ **Important clarification**
+Reliable vehicle localization remains challenging in Nordic environments due to:
+- GNSS signal degradation
+- Snow-covered infrastructure
+- Reduced visibility and harsh weather conditions
 
-This repository **does NOT implement the full vehicle localization stack**.  
-Instead, it **implements and evaluates the snow pole geo-localization component**, which is later integrated into a complete vehicle localization framework.
+This work investigates **snow poles as stable, georeferenced roadside landmarks** that can be leveraged for localization using LiDAR-based perception.
 
 ---
 
-## 🔍 Framework Overview
+## Scope of This Repository
+
+
+This repository **does NOT implement the full vehicle localization stack**.  
+Instead, it implements and evaluates **only the snow pole geo-localization component**, which is later integrated into a complete vehicle localization framework.
+
+---
+
+## Framework Overview
 
 The snow pole geo-localization workflow consists of the following stages:
 
@@ -23,15 +33,14 @@ The snow pole geo-localization workflow consists of the following stages:
 Snow poles are detected from LiDAR point clouds or LiDAR-derived representations using deep learning–based object detection models.
 
 ### 2. Georeferencing of Detected Poles
-Detected poles are associated with known **global (map-level) pole coordinates** from a georeferenced database.
-
+Detected poles are associated with known **global (map-level) snow pole coordinates** from a georeferenced database.
 
 ### 3. Evaluation Under Nordic Conditions
-The framework is validated using **real-world Nordic winter datasets**, including snow-covered roads, reduced visibility, and harsh weather conditions.
+The framework is validated using **real-world Nordic winter datasets**, including snow-covered roads, reduced visibility, and challenging weather conditions.
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 snowpole_geolocalization/
@@ -61,7 +70,6 @@ snowpole_geolocalization/
 ```
 ---
 
-
 ### 4. Data Description
 
 - **LiDAR data** collected along Norwegian highways  
@@ -72,13 +80,34 @@ snowpole_geolocalization/
 
 ---
 
-### 5. Reproducibility
+## 5. Reproducibility
 
-A Conda environment is provided to ensure reproducibility of the experiments.
+A Conda environment is provided to ensure full reproducibility of the experiments.  
+The environment is explicitly configured to use **Python 3.9.18** to maintain compatibility with all dependencies (e.g., Open3D, ROS bag processing tools).
+
+---
+
+### Create the Conda Environment
+
+Create a new Conda environment with the required Python version:
 
 ```bash
-conda env create -f environment.yml
+conda create -n snowpole_geolocalization python=3.9.18 -y
+```
+### Activate the Environment
+```text
 conda activate snowpole_geolocalization
+
+```
+### Install Dependencies
+
+Install all required packages using the provided environment.yml file:
+```bash
+conda env update -f environment.yml --prune
+```
+### Verify Installation
+```bash
+python --version
 ```
 ### 6. Related Publications
 
