@@ -12,7 +12,7 @@ transformer = Transformer.from_crs("epsg:32633", "epsg:4326", always_xy=True)
 dataRef_gnss = transformer.transform(dataRefPd["UTM33-Øst"].to_numpy(), dataRefPd["UTM33-Nord"].to_numpy())
 
 # Initialize the bag reader for Vehicle GNSS Data
-bag = bagpy.bagreader('snow_pole_geo_localization_data/2024-02-28-12-59-51.bag')
+bag = bagpy.bagreader('2024-02-28-12-59-51.bag')
 
 # Initialize lists to store latitude and longitude data for Vehicle GNSS
 latitude_data = []
