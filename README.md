@@ -82,8 +82,7 @@ snowpole_geolocalization/
 
 ## 5. Reproducibility
 
-A Conda environment is provided to ensure full reproducibility of the experiments.  
-The environment is explicitly configured to use **Python 3.9.18** to maintain compatibility with all dependencies (e.g., Open3D, ROS bag processing tools).
+A Conda environment is provided to ensure full reproducibility of the experiments. The environment is explicitly configured using **Python 3.9.18** to maintain compatibility with all dependencies.
 
 ---
 
@@ -109,29 +108,24 @@ conda env update -f environment.yml --prune
 ```bash
 python --version
 ```
-### 6. Related Publications
+## 6. Related Publications and Citation
 
-If you use this repository, please cite the following works.
+If you use this code, dataset references, or methodological ideas, please cite the corresponding publications listed below.
 
-Journal Articles
+### Journal Articles
 
-Vehicle Localization Framework Using Georeferenced Snow Poles and LiDAR in GNSS-Limited Environments Under Nordic Conditions
-Durga Prasad Bavirisetti, Gabriel E. Berget, Gabriel H. Kiss, Petter Arnesen, Håvard Seter, Frank Lindseth
-IEEE Transactions on Intelligent Transportation Systems
+- **Bavirisetti, D. P., Berget, G. E., Kiss, G. H., Arnesen, P., Seter, H., & Lindseth, F. (2025). Vehicle Localization Framework Using Georeferenced Snow Poles and LiDAR in GNSS-Limited Environments Under Nordic Conditions. IEEE Transactions on Intelligent Transportation Systems.**
 
-SnowPole Detection: A Comprehensive Dataset for Detection and Localization Using LiDAR Imaging in Nordic Winter Conditions
-Durga Prasad Bavirisetti, Gabriel H. Kiss, Petter Arnesen, Håvard Seter, S. Tabassum, Frank Lindseth
-Data in Brief, Vol. 59, 111403
+- **Bavirisetti, D. P., Kiss, G. H., Arnesen, P., Seter, H., Tabassum, S., & Lindseth, F. (2025). SnowPole Detection: A comprehensive dataset for detection and localization using LiDAR imaging in Nordic winter conditions. Data in Brief, 59, 111403.**  
+ 
 
-Conference Papers
+---
 
-Enhancing Vehicle Navigation in GNSS-Limited Environments with Georeferenced Snow Poles
-Durga Prasad Bavirisetti
-IEEE Symposium Series on Computational Intelligence (SSCI 2025), Trondheim, Norway
+### Conference Papers
 
-A Pole Detection and Geospatial Localization Framework Using LiDAR–GNSS Data Fusion
-Durga Prasad Bavirisetti, Gabriel Hanssen Kiss, Frank Lindseth
-27th International Conference on Information Fusion (FUSION 2024)
+- **Bavirisetti, D. P., Kiss, G. H., & Lindseth, F. (2024, July). A pole detection and geospatial localization framework using liDAR-GNSS data fusion. In 2024 27th International Conference on Information Fusion (FUSION) (pp. 1-8). IEEE.**
+- **Bavirisetti, D. P. (2025). Enhancing vehicle navigation in GNSS-limited environments with georeferenced snow poles. In 2025 IEEE Symposium Series on Computational Intelligence (SSCI), Trondheim, Norway, 17-20 March 2025. IEEE. (Poster Presentation)**
+
 
 ### 7. Project Context & Funding
 
@@ -140,11 +134,8 @@ This research was conducted as part of the project:
 “Machine Sensible Infrastructure under Nordic Conditions”
 Project Number: 333875
 
-### 8. Citation
 
-If you use this code, dataset references, or methodological ideas, please cite the corresponding publications listed above.
-
-### 9. Contact
+### 8. Contact
 
 Durga Prasad Bavirisetti
 Associate Professor – AI & Computer Vision
