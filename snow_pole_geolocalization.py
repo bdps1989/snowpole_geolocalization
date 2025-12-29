@@ -29,26 +29,26 @@ import numpy as np
 
 
 
-model = load_custom_model('./model/pole_best_signal.pt', confidence_threshold=0.7, backend='TkAgg')
-# Initialize matplotlib for interactive mode
-matplotlib.pyplot.matplotlib.pyplot.ion()
+model = load_custom_model('./model/pole_best_signal.pt', confidence_threshold=0.7, backend='TkAgg') # Load the custom YOLOv5 model
+
+matplotlib.pyplot.matplotlib.pyplot.ion() # Initialize matplotlib for interactive mode
 
 # Setup the figure and axis for dynamic plotting
-fig, ax = matplotlib.pyplot.subplots(figsize=(10, 8))
-ax.set_title('GNSS Data Visualization')
-ax.set_xlabel('Easting')
-ax.set_ylabel('Northing')
+fig, ax = matplotlib.pyplot.subplots(figsize=(10, 8)) # Set figure size
+ax.set_title('GNSS Data Visualization') # Set title
+ax.set_xlabel('Easting') # Set x-axis label
+ax.set_ylabel('Northing') # Set y-axis label
 
 
 
-dataRef_north, dataRef_east, min_north, max_north, min_east, max_east, dataRef_latitudes, dataRef_longitudes, min_latitude, max_latitude, min_longitude, max_longitude= load_gnss_data_and_calculate_utm_range('Groundtruth_pole_location_at_test_site_E39_Hemnekjølen.csv')
+dataRef_north, dataRef_east, min_north, max_north, min_east, max_east, dataRef_latitudes, dataRef_longitudes, min_latitude, max_latitude, min_longitude, max_longitude= load_gnss_data_and_calculate_utm_range('Groundtruth_pole_location_at_test_site_E39_Hemnekjølen.csv') # Load reference GNSS data and calculate UTM range
 print(f"min_north: {min_north}, max_north: {max_north}, min_east: {min_east}, max_east: {max_east}")
 
-ground_truth_poles = [(dataRef_east, dataRef_north) for dataRef_east, dataRef_north in zip(dataRef_east, dataRef_north)]
-unused_poles = ground_truth_poles.copy()
+ground_truth_poles = [(dataRef_east, dataRef_north) for dataRef_east, dataRef_north in zip(dataRef_east, dataRef_north)] # Create a list of ground truth pole coordinates
+unused_poles = ground_truth_poles.copy() # Create a copy of ground truth poles for unused poles tracking
 
 # Plot Reference GNSS data statically
-ax.scatter(dataRef_east, dataRef_north, c='green', label='Reference GNSS Data', marker='x')
+ax.scatter(dataRef_east, dataRef_north, c='green', label='Reference GNSS Data', marker='x') # 'gx' for green x markers
 
 
 # Placeholder for dynamically updated object GNSS data plot
@@ -56,31 +56,31 @@ corresponding_gnss_plot = ax.scatter([], [], c='blue', label='Vehicle GNSS Data'
 detected_objects_plot, = ax.plot([], [], 'ro', label='Detected Objects GNSS Data')  # 'ro' for red dots
 
 # Add the map background
-ctx.add_basemap(ax, crs='EPSG:32633', source=ctx.providers.OpenStreetMap.Mapnik)
+ctx.add_basemap(ax, crs='EPSG:32633', source=ctx.providers.OpenStreetMap.Mapnik) # Using UTM Zone 33N for the map background
 
 # Display legend
-ax.legend()
-fig.canvas.draw()
+ax.legend() # Show legend
+fig.canvas.draw() # Draw the canvas
 matplotlib.pyplot.pause(0.001)  # Pause briefly to ensure the plot displays
 
-metadata, xyzlut = load_lidar_configuration('Trip068.json', client)
+metadata, xyzlut = load_lidar_configuration('Trip068.json', client) # Load LiDAR configuration
 
-object_gnss_list = []
-corresponding_gnss_data = []
-object_gnss_data = []
-object_gnss_data_1 = []
-object_gnss_data_2 = []
-min_distance_list = []
-nearest_poles = []
-azimuth_gnss_list = []
-new_distance_list = []
-heading_list = []
-vehicle_lats = []
-vehicle_lons = []
-vehicle_eastings = []
-vehicle_northings = []
-proj_latlon = "EPSG:4326"  # WGS84
-proj_utm33 = "EPSG:32633"  # UTM Zone 33N
+object_gnss_list = [] # List to store object GNSS data
+corresponding_gnss_data = [] # List to store corresponding GNSS data
+object_gnss_data = [] # List to store object GNSS data
+object_gnss_data_1 = [] # List to store object GNSS data
+object_gnss_data_2 = [] # List to store object GNSS data
+min_distance_list = [] # List to store minimum distances
+nearest_poles = [] # List to store nearest poles  
+azimuth_gnss_list = [] # List to store azimuth values
+new_distance_list = [] # List to store new distances
+heading_list = [] # List to store heading values
+vehicle_lats = [] # List to store vehicle latitudes
+vehicle_lons = [] # List to store vehicle longitudes
+vehicle_eastings = [] # List to store vehicle eastings
+vehicle_northings = [] # List to store vehicle northings
+proj_latlon = "EPSG:4326"  # WGS84 latitude/longitude
+proj_utm33 = "EPSG:32633"  # UTM Zone 33N 
 
 
 csv_data = [] # List to store data for CSV
@@ -92,20 +92,20 @@ vehicle_gnss_average_data_vec = [] # Initialize lists to store data
 # right_gnss_offset = np.array([-0.32, 0.51, 1.24])
 gnss_offset = np.array([-0.32, 0.0, 1.24]) # average of left and right gnss offset
 lidar_offset = np.array([0.7, 0.0, 1.8])  # LiDAR sensor offset relative to the same reference point
-gnss_to_lidar_offset = gnss_offset - lidar_offset 
-print('gnss_to_lidar_offset', gnss_to_lidar_offset)
+gnss_to_lidar_offset = gnss_offset - lidar_offset  # Calculate GNSS to LiDAR offset
+print('gnss_to_lidar_offset', gnss_to_lidar_offset) # Print GNSS to LiDAR offset
 
 
 
 
-signal_image_data, nearir_image_data, reflec_image_data, range_image_data, vehicle_left_gnss_data, vehicle_right_gnss_data, imu_data, point_cloud_data, vehicle_heading_data, timestamps_signal, timestamps_nearir, timestamps_reflec, timestamps_range, timestamps_left_gnss, timestamps_right_gnss, timestamps_imu = process_ros_bag_data('./2024-02-28-12-59-51_no_unwanted_topics.bag')
+signal_image_data, nearir_image_data, reflec_image_data, range_image_data, vehicle_left_gnss_data, vehicle_right_gnss_data, imu_data, point_cloud_data, vehicle_heading_data, timestamps_signal, timestamps_nearir, timestamps_reflec, timestamps_range, timestamps_left_gnss, timestamps_right_gnss, timestamps_imu = process_ros_bag_data('./2024-02-28-12-59-51_no_unwanted_topics.bag') # Process ROS bag data
 
 # first ten time stamps
-print(f'timestamps_signal: {timestamps_signal[:10]}')
-print(f'timestamps_reflec: {timestamps_reflec[:10]}')
-print(f'timestamps_left_gnss: {timestamps_left_gnss[:10]}')
-print(f'timestamps_right_gnss: {timestamps_right_gnss[:10]}')
-print(f'timestamps_range: {timestamps_range[:10]}')
+print(f'timestamps_signal: {timestamps_signal[:10]}') # print first ten timestamps of signal
+print(f'timestamps_reflec: {timestamps_reflec[:10]}') # print first ten timestamps of reflec
+print(f'timestamps_left_gnss: {timestamps_left_gnss[:10]}') # print first ten timestamps of left gnss
+print(f'timestamps_right_gnss: {timestamps_right_gnss[:10]}') # print first ten timestamps of right gnss
+print(f'timestamps_range: {timestamps_range[:10]}') # print first ten timestamps of range
 
 print(f'length of range_image_data: {len(range_image_data)}') # print length of range_image_data
 
@@ -118,43 +118,43 @@ print(f'length of vehicle_right_gnss_data: {len(vehicle_right_gnss_data)}') # pr
 
 
 # Process data and calculate vehicle's latitude and longitude
-for i, _ in enumerate(range_image_data):
+for i, _ in enumerate(range_image_data): 
     print(f'Processing frame: {i}')
     print(f'vehicle_left_gnss_data: {vehicle_left_gnss_data[i]}')
     print(f'vehicle_right_gnss_data: {vehicle_right_gnss_data[i]}')
-    lat = (vehicle_left_gnss_data[i][0] + vehicle_right_gnss_data[i][0]) / 2
-    lon = (vehicle_left_gnss_data[i][1] + vehicle_right_gnss_data[i][1]) / 2
-    vehicle_lats.append(lat)
-    vehicle_lons.append(lon) 
+    lat = (vehicle_left_gnss_data[i][0] + vehicle_right_gnss_data[i][0]) / 2 # Average latitude from left and right GNSS
+    lon = (vehicle_left_gnss_data[i][1] + vehicle_right_gnss_data[i][1]) / 2 # Average longitude from left and right GNSS
+    vehicle_lats.append(lat) # Append latitude to the list
+    vehicle_lons.append(lon)  # Append longitude to the list
     # Convert latitude and longitude to UTM33 coordinates
-    easting, northing = transform_coordinates(proj_latlon, proj_utm33, lon, lat)
-    vehicle_eastings.append(easting)
-    vehicle_northings.append(northing)     
+    easting, northing = transform_coordinates(proj_latlon, proj_utm33, lon, lat) # Transform coordinates from lat/lon to UTM33
+    vehicle_eastings.append(easting) # Append easting to the list
+    vehicle_northings.append(northing) # Append northing to the list     
     # print(f'Vehicle GNSS: Easting: {easting}, Northing: {northing}')
-print(f'vehicle_lats: {vehicle_lats[:10]}')
-print(f'vehicle_lons: {vehicle_lons[:10]}') 
+print(f'vehicle_lats: {vehicle_lats[:10]}') # print first ten vehicle latitudes
+print(f'vehicle_lons: {vehicle_lons[:10]}') # print first ten vehicle longitudes
 
 
 
-predicted_latitude, predicted_longitude = kriging_interpolation(timestamps_range, timestamps_left_gnss[:-2], vehicle_lats, vehicle_lons)
-print(f' length of timestamps_left_gnss: {len(timestamps_left_gnss)}')
-print(f' length of timestamps_range: {len(timestamps_range)}')
+predicted_latitude, predicted_longitude = kriging_interpolation(timestamps_range, timestamps_left_gnss[:-2], vehicle_lats, vehicle_lons) # Perform Kriging interpolation to predict latitude and longitude
+print(f' length of timestamps_left_gnss: {len(timestamps_left_gnss)}') # print length of timestamps_left_gnss
+print(f' length of timestamps_range: {len(timestamps_range)}') # print length of timestamps_range
 
 
 # Iterate over each image/frame for object detection and geolocation
-for i, (range_image, timestamp) in enumerate(zip(range_image_data, timestamps_range)):
+for i, (range_image, timestamp) in enumerate(zip(range_image_data, timestamps_range)): # Iterate through range images and their timestamps
 
-    vehicle_easting, vehicle_northing = transform_coordinates(proj_latlon, proj_utm33, predicted_longitude[i], predicted_latitude[i])
-    if min_north <= vehicle_northing <= max_north and min_east <= vehicle_easting <= max_east: # Check if the vehicle GNSS data is within the reference range        # display the range image using opencv
-        print(f'Processing frame: {i}')
+    vehicle_easting, vehicle_northing = transform_coordinates(proj_latlon, proj_utm33, predicted_longitude[i], predicted_latitude[i]) # Transform predicted lat/lon to UTM33 coordinates
+    if min_north <= vehicle_northing <= max_north and min_east <= vehicle_easting <= max_east: # Check if the vehicle GNSS data is within the reference range       
+        print(f'Processing frame: {i}') # Print the current frame being processed
         # Calculate heading and draw on the plot
         if i > 0:  # Ensure there is a previous point to calculate heading
 
-            range_image_vis = (range_image - range_image.min()) / (range_image.max() - range_image.min())
-            # create rgb image of range_image using range_image as all 3 channels
-            range_image_vis = np.stack((range_image_vis, range_image_vis, range_image_vis), axis=-1)
-            cv2.imshow('range_image', range_image_vis)
-            xyz = xyzlut(range_image)
+            range_image_vis = (range_image - range_image.min()) / (range_image.max() - range_image.min()) # Normalize range image for visualization
+            # create rgb image of range_image using range_image as all 3 channels 
+            range_image_vis = np.stack((range_image_vis, range_image_vis, range_image_vis), axis=-1) # Stack range image into 3 channels for RGB
+            cv2.imshow('range_image', range_image_vis) # Display the range image using cv2
+            xyz = xyzlut(range_image) # Generate point cloud from range image using lookup table
             # print(f'xyz table pointcloud shape: {xyz.shape}')
             xyz = xyz * 4 # mutiply by 4(mm) to get the actual xyz values
     
@@ -163,68 +163,62 @@ for i, (range_image, timestamp) in enumerate(zip(range_image_data, timestamps_ra
             # cv2.imshow('Range Image from lookup table point cloud ', range_lookup_table)
 
             
-            rgb_image = np. stack((signal_image_data[i], signal_image_data[i], signal_image_data[i]), axis=-1)
+            rgb_image = np. stack((signal_image_data[i], signal_image_data[i], signal_image_data[i]), axis=-1) # Create RGB image by stacking signal image data into 3 channels
             # rgb_image = np. stack((signal_image_data[i], nearir_image_data[i], reflec_image_data[i]), axis=-1)
 
             
-            rgb_image = ((rgb_image - rgb_image.min()) / (rgb_image.max() - rgb_image.min()) * 255).astype(np.uint8)
-            results = model(rgb_image)
-            rgb_annotated_img = results.render()[0]
-            bboxes = results.xyxy[0]
+            rgb_image = ((rgb_image - rgb_image.min()) / (rgb_image.max() - rgb_image.min()) * 255).astype(np.uint8) # Normalize RGB image to 0-255 and convert to uint8
+            results = model(rgb_image) # Perform object detection using the loaded model
+            rgb_annotated_img = results.render()[0] # Render the detection results on the RGB image
+            bboxes = results.xyxy[0] # Extract bounding boxes from the detection results
 
-            for bbox in bboxes:
+            for bbox in bboxes: # Iterate through each detected bounding box
                 
-                print(f'sequence number used for geo localization: {i}') # print i number
-                vehicle_gnss_average_data_vec.append((vehicle_easting, vehicle_northing))
-                x_min, y_min, x_max, y_max = map(int, bbox[:4])
+                print(f'sequence number used for geo localization: {i}') # Print the sequence number for geolocation
+                vehicle_gnss_average_data_vec.append((vehicle_easting, vehicle_northing)) # Append vehicle GNSS data to the list
+                x_min, y_min, x_max, y_max = map(int, bbox[:4]) # Extract bounding box coordinates
                 bbox_range = range_image_data[i][y_min:y_max, x_min:x_max] # Extract the range values within the bounding box
 
-                global_x, global_y, nearest_distance = extract_nearest_point_in_bounding_box_region(x_min, x_max, y_min, y_max, rgb_image, range_image_data, i)
-                print(f'Object: Global X: {global_x}, Global Y: {global_y} for range_image_data')
+                global_x, global_y, nearest_distance = extract_nearest_point_in_bounding_box_region(x_min, x_max, y_min, y_max, rgb_image, range_image_data, i) # Extract the nearest point within the bounding box region
+                print(f'Object: Global X: {global_x}, Global Y: {global_y} for range_image_data') # Print the global coordinates of the detected object
 
                 # Check if the values are None and skip the rest of the calculations if so
                 if global_x is None or global_y is None or nearest_distance is None:
                   print('Skipping calculations as no valid nearest point found.')
                   continue  # Skip to the next iteration of the loop
 
-                center_xyz   = xyz[int(global_y), int(global_x), :]
-                print('center_xyz before transformation', center_xyz)
+                center_xyz   = xyz[int(global_y), int(global_x), :] # Get the XYZ coordinates of the nearest point
+                print('center_xyz before transformation', center_xyz) # Print the center XYZ coordinates before transformation
                 # xyz_distance = np.linalg.norm(center_xyz)
                 # print('xyz_distance_table_pointcloud in mts', xyz_distance)
 
                 nearest_distance_range = (range_image_data[i][global_y, global_x] / (1000))*4 # Convert to meters
-                print('nearest distance in mts from range image', nearest_distance_range)
-                # difference = np.round(xyz_distance - nearest_distance_range, 4)
-                # abs_diff = np.abs(difference)
-                # # convert abs_diff to centimeters
-                # abs_diff_cm = abs_diff * 100
-                # print(f'abs_diff in mts: {abs_diff}, abs_diff in cm: {abs_diff_cm}')
-                # add lidar to gnss offset to center_xyz and calculate the gnss coordinates
-                # add center_xyz to gnss offset to get the gnss coordinates
+                print('nearest distance in mts from range image', nearest_distance_range) # Print the nearest distance from the range image
+
                 x, y, z = center_xyz
 
                 # calculate the distance from the center_xyz to the gnss_offset
-                new_distance = calculate_distance(center_xyz, gnss_to_lidar_offset)
-                print('new_distance from the  gnss location w.r.to gnss', new_distance)
+                new_distance = calculate_distance(center_xyz, gnss_to_lidar_offset) # Calculate new distance from the GNSS location
+                print('new_distance from the  gnss location w.r.to gnss', new_distance) # Print the new distance from the GNSS location
                 # append the new_distance to the list
                 
-                new_distance_list.append(new_distance)
+                new_distance_list.append(new_distance) # Append new distance to the list
 
 
-                easting_vec, northing_vec = zip(*vehicle_gnss_average_data_vec)
+                easting_vec, northing_vec = zip(*vehicle_gnss_average_data_vec) # Unzip vehicle GNSS data into separate lists
 
-                easting1, northing1 = vehicle_eastings[i - 1], vehicle_northings[i - 1]
-                easting2, northing2 = vehicle_easting, vehicle_northing
-                heading = calculate_vehicle_heading_from_two_utm(easting1, northing1, easting2, northing2)
+                easting1, northing1 = vehicle_eastings[i - 1], vehicle_northings[i - 1] # Previous vehicle GNSS coordinates
+                easting2, northing2 = vehicle_easting, vehicle_northing # Current vehicle GNSS coordinates
+                heading = calculate_vehicle_heading_from_two_utm(easting1, northing1, easting2, northing2) # Calculate vehicle heading from two UTM coordinates
                 
-                heading_list.append(heading)
-                end_easting, end_northing = calculate_vehicle_heading_direction_utm(easting1, northing1, heading)
+                heading_list.append(heading) # Append heading to the list
+                end_easting, end_northing = calculate_vehicle_heading_direction_utm(easting1, northing1, heading) # Calculate the end point based on heading
 
 
-                azimuth_gnss, elevation_gnss = calculate_azimuth_elevation_from_gnss(x, y, z, gnss_to_lidar_offset)
-                print(f'Azimuth: {azimuth_gnss}, Elevation: {elevation_gnss} from the GNSS sensor')
+                azimuth_gnss, elevation_gnss = calculate_azimuth_elevation_from_gnss(x, y, z, gnss_to_lidar_offset) # Calculate azimuth and elevation from GNSS
+                print(f'Azimuth: {azimuth_gnss}, Elevation: {elevation_gnss} from the GNSS sensor') # Print azimuth and elevation from GNSS sensor
 
-                print(f'Vehcile Heading from GNSS: {heading}')
+                print(f'Vehcile Heading from GNSS: {heading}') # Print vehicle heading from GNSS
                 # print vehicle heading
                 # vehicle_heading = math.degrees(vehicle_heading_data[i])
                 # print(f'Vehicle Heading from the vehicle: {vehicle_heading}')
@@ -308,7 +302,7 @@ for i, (range_image, timestamp) in enumerate(zip(range_image_data, timestamps_ra
                 new_size = (1024, 128)
                 rgb_annotated_img = cv2.resize(rgb_annotated_img, new_size)
 
-                # Step 1: Display the image without text annotations
+                #  Display the image without text annotations
                 # cv2.imshow("Geo referenced poles", rgb_annotated_img)
                 # cv2.waitKey(1)  # Refresh the display with the current image
                 # time.sleep(3)  # Wait for 3 seconds
@@ -373,7 +367,7 @@ for i, (range_image, timestamp) in enumerate(zip(range_image_data, timestamps_ra
                 cv2.putText(rgb_annotated_img, annotation_text, (x_max, y_max - vertical_offset), 
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
-                # Step 3: Redisplay the image with the text annotations
+                #  Redisplay the image with the text annotations
                 # cv2.imshow("Geo referenced poles", rgb_annotated_img)
 
                 # Assuming original image size and new image size
