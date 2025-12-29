@@ -275,7 +275,7 @@ for i, (range_image, timestamp) in enumerate(zip(range_image_data, timestamps_ra
                 print(f'Target GNSS: Easting: {target_easting}, Northing: {target_northing}')
                 
 
-                
+                ####################Update the dynamic plot with new data #########################
                 # # chnage marker color to light blue
 
                 # corresponding_gnss_plot = ax.scatter(easting_vec, northing_vec, c='cornflowerblue', label='Vehicle GNSS Data', marker='^')
@@ -293,6 +293,7 @@ for i, (range_image, timestamp) in enumerate(zip(range_image_data, timestamps_ra
  
                 # fig.canvas.draw_idle()
                 # matplotlib.pyplot.pause(1)  # A short pause to ensure the plot updates and remains responsive
+                #################### End of dynamic plot update #########################
 
              
 
