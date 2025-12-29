@@ -69,10 +69,20 @@ All datasets, trained models, and source code are publicly available via the  **
 
 
 ### 2. Georeferencing of Detected Poles
-Detected poles are associated with known **global (map-level) snow pole coordinates** from a georeferenced database.
 
-### 3. Evaluation Under Nordic Conditions
-The framework is validated using **real-world Nordic winter datasets**, including snow-covered roads, reduced visibility, and challenging weather conditions.
+Detected snow poles are initially localized **relative to the vehicle** by estimating their distance and bearing from LiDAR observations. These relative measurements are then fused with **continuous GNSS positioning** to compute the **absolute (map-level) geolocation** of each pole, which is aligned with pre-measured ground-truth coordinates at the test site.
+
+Experimental evaluation is performed using a **pretrained snow pole detection model** in combination with **ROS bag recordings containing synchronized LiDAR-derived images and GNSS measurements**. The dataset used for evaluation is publicly available on **Kaggle** [7].
+
+This integrated **GNSS–LiDAR fusion framework** enables accurate snow pole geolocation under harsh winter conditions and forms a reliable foundation for vehicle localization. Once validated in GNSS-available scenarios, the approach can be extended to support **odometry-based vehicle localization** in **GNSS-limited or GNSS-denied environments**.
+
+#### Using ROS Bag Data for Visualization and Analysis
+
+Download **any one of the ROS bag files** available for this project and place it inside the `snowpole_geolocalization/` directory (or update the file paths in the scripts accordingly).
+
+To visualize and process various sensor data—such as **raw LiDAR point clouds**, **LiDAR-derived images**, and **GNSS information**—use the utilities provided in the `rosbag_utils/` folder of this repository.
+
+
 
 ---
 
@@ -108,11 +118,10 @@ snowpole_geolocalization/
 
 ### 4. Data Description
 
-- **LiDAR data** collected along Norwegian highways  
-- **Georeferenced snow pole locations** obtained from infrastructure-level mapping  
-- **Test site**: E39 – Hemnekjølen, Norway  
+The dataset used in this repository comprises **LiDAR sensor data** collected along Norwegian highways, with a particular focus on the **E39 – Hemnekjølen test site in Norway**. In addition to LiDAR and GNSS measurements, the dataset includes **georeferenced snow pole locations** obtained through infrastructure-level mapping, which serve as fixed landmarks for localization and evaluation.
 
-⚠️ **Raw LiDAR datasets and large artifacts are not included in this repository** due to size limitations and data-sharing constraints.
+Due to data size limitations and data-sharing constraints, **raw LiDAR datasets and other large artifacts are not included directly in this repository**. Instead, the repository provides the necessary tools, scripts, and metadata to support data processing, visualization, and reproducibility using externally hosted datasets[5-7].
+
 
 ---
 
