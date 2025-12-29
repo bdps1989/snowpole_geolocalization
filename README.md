@@ -27,7 +27,12 @@ Instead, it implements and evaluates **only the snow pole geo-localization compo
 
 ## Framework Overview
 
-The snow pole geo-localization workflow consists of the following stages:
+This framework provides a structured approach for **detecting and geolocating snow poles** using **continuous GNSS and LiDAR data**, specifically designed for **harsh Nordic winter environments** where visual cues are limited. GNSS measurements provide a global positioning reference, while high-resolution LiDAR data enable reliable detection and relative localization of snow poles in the vehicle’s surroundings.
+
+Detected snow poles are first localized **relative to the vehicle** by estimating their distance and bearing from LiDAR observations. These relative measurements are then fused with GNSS positioning to compute **absolute geolocations** of the poles, which are aligned with pre-measured ground-truth coordinates at the test site. The framework is evaluated by comparing estimated pole positions against known reference locations, ensuring accuracy and robustness.
+
+By tightly integrating GNSS and LiDAR sensing, this snow-pole geo-localization framework enables **reliable vehicle localization in GNSS-limited or winter-degraded conditions**, where conventional perception and positioning methods often fail.
+
 
 ### 1. Snow Pole Detection
 
@@ -58,7 +63,8 @@ Performance is evaluated using **Precision**, **Recall**, **mAP@50**, **mAP@50�
 
 Pseudo-color combinations—particularly those fusing **Near-Infrared, Signal, and Reflectance**—consistently outperform single-channel modalities and yield the highest Rank Scores. Based on these findings, **multimodal LiDAR configurations** (e.g., Combination 4 and Combination 5) are recommended to enhance detection robustness.
 
-All datasets, trained models, and source code are **publicly available** via this GitHub repository(https://github.com/MuhammadIbneRafiq/Extended-evaluation-snowpole-lidar-dataset) and the accompanying **Mendeley Data archive**[6], supporting full reproducibility and further research.
+All datasets, trained models, and source code are publicly available via the  **GitHub repository:** https://github.com/MuhammadIbneRafiq/Extended-evaluation-snowpole-lidar-dataset  and the accompanying **Mendeley Data archive** [6], supporting full reproducibility and further research.
+
 
 
 
@@ -155,22 +161,20 @@ If you use this code, dataset references, or methodological ideas, please cite t
 
 3. **Bavirisetti, D. P., Kiss, G. H., & Lindseth, F. (2024, July). A pole detection and geospatial localization framework using liDAR-GNSS data fusion. In 2024 27th International Conference on Information Fusion (FUSION) (pp. 1-8). IEEE.**
 4. **Bavirisetti, D. P. (2025). Enhancing vehicle navigation in GNSS-limited environments with georeferenced snow poles. In 2025 IEEE Symposium Series on Computational Intelligence (SSCI), Trondheim, Norway, 17-20 March 2025. IEEE. (Poster Presentation)**
+   
 ### Datasets
-5. **Bavirisetti, Durga Prasad; Kiss, Gabriel Hanssen ; Arnesen, Petter ; Seter, Hanne ; Tabassum, Shaira ; Lindseth, Frank  (2024), “SnowPole Detection: A Comprehensive Dataset for Detection and Localization Using LiDAR Imaging in Nordic Winter Conditions”, Mendeley Data, V2, doi: 10.17632/tt6rbx7s3h.2**
-6. **Bavirisetti, Durga Prasad; Rafiq, Muhammad; Kiss, Gabriel Hanssen ; Lindseth, Frank  (2025), “Extended Evaluation of SnowPole Detection for Machine-Perceivable Infrastructure for Nordic Winter Conditions: A Comparative Study of Object Detection Models”, Mendeley Data, V3, doi: 10.17632/tt6rbx7s3h.3**
+5. **Bavirisetti, Durga Prasad; Kiss, Gabriel Hanssen ; Arnesen, Petter ; Seter, Hanne ; Tabassum, Shaira ; Lindseth, Frank  (2024), “SnowPole Detection: A Comprehensive Dataset for Detection and Localization Using LiDAR Imaging in Nordic Winter Conditions”, Mendeley Data, V2, [https://doi.org/10.17632/tt6rbx7s3h.2](https://doi.org/10.17632/tt6rbx7s3h.2)**
+6. **Bavirisetti, Durga Prasad; Rafiq, Muhammad; Kiss, Gabriel Hanssen ; Lindseth, Frank  (2025), “Extended Evaluation of SnowPole Detection for Machine-Perceivable Infrastructure for Nordic Winter Conditions: A Comparative Study of Object Detection Models”, Mendeley Data, V3, [https://doi.org/10.17632/tt6rbx7s3h.3](https://doi.org/10.17632/tt6rbx7s3h.3)**
 7. **Durga Prasad Bavirisetti, Gabriel Hanssen Kiss, Frank Lindseth, Petter Arnesen, and Hanne Seter. (2025). Data for the snowpole based vehicle localization [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/14311103**
 ### 7. Project Context & Funding
 
-This research was conducted as part of the project:
-
-“Machine Sensible Infrastructure under Nordic Conditions”
-Project Number: 333875
+This research was conducted as part of the project: “Machine Sensible Infrastructure under Nordic Conditions” with Project Number: 333875
 
 
 ### 8. Contact
 
-Durga Prasad Bavirisetti
-Associate Professor – AI & Computer Vision
+Durga Prasad Bavirisetti,
+Associate Professor – AI & Computer Vision,
 University of Gävle, Sweden
 
 For questions, collaborations, or extensions of this work, feel free to get in touch.
