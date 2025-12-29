@@ -60,7 +60,7 @@ Performance is evaluated using **Precision**, **Recall**, **mAP@50**, **mAP@50�
 
 Pseudo-color combinations—particularly those fusing **Near-Infrared, Signal, and Reflectance**—consistently outperform single-channel modalities and yield the highest Rank Scores. Based on these findings, **multimodal LiDAR configurations** (e.g., Combination 4 and Combination 5) are recommended to enhance detection robustness.
 
-All datasets, trained models, and source code are publicly available via the  **GitHub repository:** https://github.com/MuhammadIbneRafiq/Extended-evaluation-snowpole-lidar-dataset  and the accompanying **Mendeley Data archive** [6], supporting full reproducibility and further research.
+All datasets, trained models, and source code are publicly available via the  **GitHub repository:** (https://github.com/MuhammadIbneRafiq/Extended-evaluation-snowpole-lidar-dataset)  and the accompanying **Mendeley Data archive** [6], supporting full reproducibility and further research.
 
 
 
@@ -75,9 +75,18 @@ This integrated **GNSS–LiDAR fusion framework** enables accurate snow pole geo
 
 #### Using ROS Bag Data for Visualization and Analysis
 
-Download **any one of the ROS bag files** available for this project and place it inside the `snowpole_geolocalization/` directory (or update the file paths in the scripts accordingly).
+Download **any one of the ROS bag files** associated with this project and place it inside the `snowpole_geolocalization/` directory (or update the file paths in the scripts accordingly). The ROS bag files are publicly available on **Kaggle**[7] under the folder `snow_pole_geo_localization_data`.
 
-To visualize and process various sensor data—such as **raw LiDAR point clouds**, **LiDAR-derived images**, and **GNSS information**—use the utilities provided in the `rosbag_utils/` folder of this repository.
+The following ROS bag files are provided:
+
+- **`2024-02-28-12-59-51.bag` (41.24 GB)**  
+  Contains the **complete raw dataset**, including all recorded sensor streams.
+
+- **`2024-02-28-12-59-51_no_unwanted_topics.bag` (5.71 GB)**  
+  A reduced version containing **only the LiDAR-derived images and GNSS data** required to conduct the experiments presented in this project.
+
+To visualize and process various sensor data—such as **raw LiDAR point clouds**, **LiDAR-derived images**, and **GNSS information**—use the utilities provided in the `rosbag_utils/` folder of this repository. These scripts support data inspection, visualization, and preprocessing for reproducing the snow pole geo-localization experiments.
+
 
 
 
