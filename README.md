@@ -8,24 +8,21 @@ Snow poles are treated as **machine-perceivable infrastructure landmarks**, allo
 
 ## Background and Motivation
 
-Reliable vehicle localization remains challenging in Nordic environments due to:
-- GNSS signal degradation
-- Snow-covered infrastructure
-- Reduced visibility and harsh weather conditions
+Reliable vehicle localization remains a significant challenge in Nordic environments due to **GNSS signal degradation**, and **snow-covered infrastructure caused by harsh weather conditions**. These factors limit the effectiveness of conventional positioning and perception methods, particularly in winter scenarios where visual cues are sparse or unreliable.
 
-This work investigates **snow poles as stable, georeferenced roadside landmarks** that can be leveraged for localization using LiDAR-based perception.
+This work investigates the use of **snow poles as stable, georeferenced roadside landmarks** that can be reliably detected using **LiDAR-based perception**. By leveraging snow poles as machine-perceivable infrastructure, the proposed approach enables robust vehicle localization in environments where GNSS performance is degraded or unavailable.
+
 
 ---
 
 ## Scope of This Repository
 
 
-This repository **does NOT implement the full vehicle localization stack**.  
-Instead, it implements and evaluates **only the snow pole geo-localization component**, which is later integrated into a complete vehicle localization framework.
+This repository **does NOT implement the full vehicle localization stack**. Instead, it implements and evaluates **only the snow pole geo-localization component**, which is later integrated into a complete vehicle localization framework (https://github.com/bdps1989/Snow-pole-based-vehicle-localization).
 
 ---
 
-## Framework Overview
+## Snow Pole Geo-Localization Framework Overview
 
 This framework provides a structured approach for **detecting and geolocating snow poles** using **continuous GNSS and LiDAR data**, specifically designed for **harsh Nordic winter environments** where visual cues are limited. GNSS measurements provide a global positioning reference, while high-resolution LiDAR data enable reliable detection and relative localization of snow poles in the vehicle’s surroundings.
 
