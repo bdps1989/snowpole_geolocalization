@@ -45,7 +45,7 @@ Each detected bounding box is mapped back to the corresponding region in the **L
 
 #### Extended Model Evaluation
 
-Building on the initial Snow Pole Detection dataset[2],[6] and prior LiDAR–GNSS localization work[3], we further conduct an extensive evaluation of **six YOLO-based object detection architectures[4]**:
+Building on the initial Snow Pole Detection dataset[2],[6] and prior LiDAR–GNSS localization work[3], we further conducted an extensive evaluation of **six YOLO-based object detection architectures[4]**:
 
 - YOLOv5s  
 - YOLOv7-tiny  
@@ -56,9 +56,9 @@ Building on the initial Snow Pole Detection dataset[2],[6] and prior LiDAR–GNS
 
 The models are benchmarked across multiple **LiDAR-derived input modalities**, including single-channel representations (**Reflectance**, **Signal**, **Near-Infrared**) and **six pseudo-color combinations** constructed from these channels.
 
-Performance is evaluated using **Precision**, **Recall**, **mAP@50**, **mAP@50–95**, and **GPU inference latency**. To enable systematic comparison between accuracy and real-time capability, a **composite Rank Score** is defined. Results indicate that **YOLOv9t** achieves the highest detection accuracy, while **YOLOv11n** offers the best balance between accuracy and inference speed, making it well suited for real-time deployment.
+Performance is evaluated using **Precision**, **Recall**, **mAP@50**, **mAP@50–95**, and **GPU inference latency**. To enable systematic comparison between accuracy and real-time capability, a **composite Rank Score** is defined. Results indicate that **YOLOv9t** achieves the highest detection accuracy, while **YOLOv11n** offered the best balance between accuracy and inference speed, making it well suited for real-time deployment.
 
-Pseudo-color combinations—particularly those fusing **Near-Infrared, Signal, and Reflectance**—consistently outperform single-channel modalities and yield the highest Rank Scores. Based on these findings, **multimodal LiDAR configurations** (e.g., Combination 4 and Combination 5) are recommended to enhance detection robustness.
+Pseudo-color combinations—particularly those fusing **Near-Infrared, Signal, and Reflectance**—consistently outperformed single-channel modalities and yielded the highest Rank Scores. Based on these findings, **multimodal LiDAR configurations** (e.g., Combination 4 and Combination 5) are recommended to enhance detection robustness.
 
 All datasets, trained models, and source code are publicly available via the  **GitHub repository:** (https://github.com/MuhammadIbneRafiq/Extended-evaluation-snowpole-lidar-dataset)  and the accompanying **Mendeley Data archive** [7], supporting full reproducibility and further research.
 
