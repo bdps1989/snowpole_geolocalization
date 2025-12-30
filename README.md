@@ -92,6 +92,7 @@ To visualize and process various sensor data—such as **raw LiDAR point clouds*
 
 ---
 
+
 ## Repository Structure
 
 ```text
@@ -103,22 +104,38 @@ snowpole_geolocalization/
 ├── geoloc_utils.py
 │   Utility functions for coordinate transformation, matching, and evaluation
 │
+├── rosbag_utils/
+│   Utilities for ROS bag processing and visualization
+│   │
+│   ├── extract_rosbag_topics.py
+│   │   Extracts required sensor topics from ROS bag files
+│   │
+│   ├── gnss_and_groundtruth_snowpole_visualization.py
+│   │   Visualizes GNSS data alongside ground-truth snow pole locations
+│   │
+│   ├── lidar_image_visualization.py
+│   │   Visualization of LiDAR-derived images
+│   │
+│   ├── range_image_to_pointcloud_visualization.py
+│   │   Generates and visualizes point clouds from LiDAR range images
+│   │
+│   └── realpointcloud_vlsulaization.py
+│       Visualizes raw LiDAR point clouds from ROS bag data
+│
 ├── model/
 │   Detection models and related components
 │
 ├── Groundtruth_pole_location_at_test_site_E39_Hemnekjølen.csv
-│   Georeferenced snow pole locations for evaluation
+│   Georeferenced snow pole locations used for evaluation
 │
 ├── Trip068.json
-│   Sample trip metadata
+│   Sample trip metadata and configuration file
 │
 ├── environment.yml
-│   Conda environment for reproducibility
-│
-├── .gitignore
-│   Excludes datasets, cache files, and large artifacts
+│   Conda environment specification for reproducibility
 │
 └── README.md
+    Project description, usage instructions, and references
 ```
 ---
 
