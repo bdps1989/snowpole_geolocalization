@@ -18,7 +18,23 @@ This work investigates the use of **snow poles as stable, georeferenced roadside
 ## Scope of This Repository
 
 
-This repository **does NOT implement the full vehicle localization stack**. Instead, it implements and evaluates **only the snow pole geo-localization component**, which is later integrated into a complete vehicle localization framework (https://github.com/bdps1989/Snow-pole-based-vehicle-localization).
+This repository implements the snow-pole-based vehicle localization framework proposed in the IEEE Transactions on Intelligent Transportation Systems paper “Vehicle Localization Framework Using Georeferenced Snow Poles and LiDAR in GNSS-Limited Environments under Nordic Conditions” 
+
+The scope of this repository is to provide an end-to-end localization pipeline that enables robust vehicle positioning in GNSS-limited or GNSS-denied environments, particularly under harsh Nordic winter conditions, by leveraging georeferenced snow poles as machine-perceivable infrastructure landmarks.
+
+Specifically, this repository includes:
+
+Snow pole–based landmark utilization using pre-measured, georeferenced roadside snow poles
+
+LiDAR-based perception and localization, including snow pole detection and relative pose estimation
+
+GNSS–LiDAR fusion, dynamically alternating between GNSS-based positioning and LiDAR-based localization depending on GNSS availability
+
+Incremental vehicle navigation (odometry) using point-cloud registration to maintain continuity during GNSS outages
+
+Iterative vehicle pose refinement using snow pole geolocalization to reduce drift and improve accuracy
+
+Quantitative and qualitative evaluation tools for comparing estimated vehicle positions against GNSS reference trajectories
 
 ---
 
