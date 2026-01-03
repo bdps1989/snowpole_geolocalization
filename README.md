@@ -198,6 +198,7 @@ conda env update -f environment.yml --prune
 ```bash
 python --version
 ```
+---
 ## Related Publications and Citation
 
 If you use this code, dataset references, or methodological ideas, please cite the corresponding publications listed below.
@@ -209,7 +210,6 @@ If you use this code, dataset references, or methodological ideas, please cite t
 2. **Bavirisetti, D. P., Kiss, G. H., Arnesen, P., Seter, H., Tabassum, S., & Lindseth, F. (2025). SnowPole Detection: A comprehensive dataset for detection and localization using LiDAR imaging in Nordic winter conditions. Data in Brief, 59, 111403.**  
  
 
----
 
 ### Conference Papers
 
@@ -221,16 +221,32 @@ If you use this code, dataset references, or methodological ideas, please cite t
 6. **Bavirisetti, Durga Prasad; Kiss, Gabriel Hanssen ; Arnesen, Petter ; Seter, Hanne ; Tabassum, Shaira ; Lindseth, Frank  (2024), “SnowPole Detection: A Comprehensive Dataset for Detection and Localization Using LiDAR Imaging in Nordic Winter Conditions”, Mendeley Data, V2, [https://doi.org/10.17632/tt6rbx7s3h.2](https://doi.org/10.17632/tt6rbx7s3h.2)**
 7. **Bavirisetti, Durga Prasad; Rafiq, Muhammad; Kiss, Gabriel Hanssen ; Lindseth, Frank  (2025), “Extended Evaluation of SnowPole Detection for Machine-Perceivable Infrastructure for Nordic Winter Conditions: A Comparative Study of Object Detection Models”, Mendeley Data, V3, [https://doi.org/10.17632/tt6rbx7s3h.3](https://doi.org/10.17632/tt6rbx7s3h.3)**
 8. **Durga Prasad Bavirisetti, Gabriel Hanssen Kiss, Frank Lindseth, Petter Arnesen, and Hanne Seter. (2025). Data for the snowpole based vehicle localization [Data set]. Kaggle. https://doi.org/10.34740/KAGGLE/DSV/14311103**
+---
 
+
+
+## References
+
+9. Arnold, E., Mozaffari, S., & Dianati, M. (2021). Fast and robust registration of partially overlapping point clouds. IEEE Robotics and Automation Letters, 7(2), 1502-1509.
+10. Jocher, G. (2020). YOLOv5 by ultralytics (version 7.0)[computer software].
+
+
+---
 ##  Project Context & Funding
+
 
 This research was conducted as part of the project: “Machine Sensible Infrastructure under Nordic Conditions” with Project Number: 333875
 
-
+---
 ## Contact
 
-Durga Prasad Bavirisetti,
-Associate Professor – AI & Computer Vision,
+**Durga Prasad Bavirisetti**  
+
+Senior Lecturer - Artificial Intelligence & Computer Vision
+
+Department of Computer Science
+
 University of Gävle, Sweden
 
 For questions, collaborations, or extensions of this work, feel free to get in touch.
+
