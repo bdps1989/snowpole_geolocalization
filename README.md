@@ -3,7 +3,7 @@
 ---
 This repository focuses **exclusively on snow pole geo-localization**, which constitutes a **core sub-module** of a broader **vehicle localization framework based on georeferenced snow poles and LiDAR data** [1]. The complete vehicle localization pipeline is available at:
 
-https://github.com/bdps1989/Snow-pole-based-vehicle-localization-temporary
+https://github.com/bdps1989/Snow-pole-based-vehicle-localization
 
 The snow pole geo-localization concept was **initially introduced in [3]** and has been **further extended and refined in [1]**. The primary objective of this module is to enable **robust and reliable vehicle localization in GNSS-limited or GNSS-denied environments**, with a particular focus on **harsh Nordic winter conditions**.
 
