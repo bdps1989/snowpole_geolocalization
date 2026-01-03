@@ -9,6 +9,7 @@ The snow pole geo-localization concept was **initially introduced in [3]** and h
 
 In this framework, snow poles are treated as **machine-perceivable roadside infrastructure landmarks**. By leveraging their stable geometry and georeferenced positions, the system enables accurate vehicle position estimation when GNSS signals are degraded, intermittent, or unavailable.
 <img width="1229" height="1062" alt="image" src="https://github.com/user-attachments/assets/0590fcf1-0795-411f-bbc8-f217064244b8" />
+**Fig. 1: Snow Pole Detection and Geolocalization framework**
 
 
 
@@ -205,17 +206,17 @@ python --version
 <img width="1490" height="212" alt="image" src="https://github.com/user-attachments/assets/4f02376c-5dc1-49ce-a5eb-6761c5353c5b" />
 
 
-**Fig. 1: Geolocalized Snow Poles: This image illustrates the position of snow poles as geolocated relative to the vehicle’s GNSS and LiDAR sensors, projected onto a 2D image for spatial reference..**
+**Fig. 2: Geolocalized Snow Poles: This image illustrates the position of snow poles as geolocated relative to the vehicle’s GNSS and LiDAR sensors, projected onto a 2D image for spatial reference..**
 
 <img width="1637" height="933" alt="image" src="https://github.com/user-attachments/assets/2ab03528-5511-4603-a130-b350c6095a77" />
 
 
-**Fig. 2: Visual quality analysis of snow pole geolocalization on QGIS: (a) Measured poles along the route, (b) Original vehicle GNSS path overlaid with measured poles, (c) Estimated poles along the vehicle GNSS path, and (d) Full route of the vehicle with both measured and estimated poles.**
+**Fig. 3: Visual quality analysis of snow pole geolocalization on QGIS: (a) Measured poles along the route, (b) Original vehicle GNSS path overlaid with measured poles, (c) Estimated poles along the vehicle GNSS path, and (d) Full route of the vehicle with both measured and estimated poles.**
 
 <img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/c13c219d-88ee-4c2c-a6f1-2c39a74fe616" />
 
 
-**Fig. 3: Histogram of error distances between measured and predicted pole locations, with the mean, median, and standard deviation highlighted.**
+**Fig. 4: Histogram of error distances between measured and predicted pole locations, with the mean, median, and standard deviation highlighted.**
 
 **TABLE I: Summary of detected snow poles relative to the total number of measured poles at the test location.**
 
