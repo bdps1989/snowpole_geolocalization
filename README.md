@@ -8,6 +8,7 @@ https://github.com/bdps1989/Snow-pole-based-vehicle-localization-temporary
 The snow pole geo-localization concept was **initially introduced in [3]** and has been **further extended and refined in [1]**. The primary objective of this module is to enable **robust and reliable vehicle localization in GNSS-limited or GNSS-denied environments**, with a particular focus on **harsh Nordic winter conditions**.
 
 In this framework, snow poles are treated as **machine-perceivable roadside infrastructure landmarks**. By leveraging their stable geometry and georeferenced positions, the system enables accurate vehicle position estimation when GNSS signals are degraded, intermittent, or unavailable.
+<img width="1229" height="1062" alt="image" src="https://github.com/user-attachments/assets/0590fcf1-0795-411f-bbc8-f217064244b8" />
 
 
 
@@ -27,7 +28,7 @@ By tightly integrating GNSS and LiDAR sensing, this snow-pole geo-localization f
 
 To enable landmark-based localization in **GNSS-degraded or GNSS-denied environments**, snow pole detection is formulated as a **2D object detection problem** using **LiDAR-derived signal images**.
 
-A **YOLOv5s-based convolutional neural network (CNN)** is initially employed to detect snow poles from LiDAR signal images. The model was trained on a curated dataset[2] of **1,954 manually annotated images**, split into **1,367 training**, **390 validation**, and **197 test images**. Initial annotations were created using **Roboflow** and subsequently refined in **CVAT** to correct labeling inaccuracies caused by JPEG compression artifacts, improving annotation fidelity.
+A **YOLOv5s-based convolutional neural network (CNN)[10]** is initially employed to detect snow poles from LiDAR signal images. The model was trained on a curated dataset[2] of **1,954 manually annotated images**, split into **1,367 training**, **390 validation**, and **197 test images**. Initial annotations were created using **Roboflow** and subsequently refined in **CVAT** to correct labeling inaccuracies caused by JPEG compression artifacts, improving annotation fidelity.
 
 To maximize the utilization of labeled data, the original training and test sets were combined[3], resulting in **1,564 images** used for training. The final model was evaluated on a held-out validation set of **390 images**, achieving a **precision of 0.873**, **recall of 0.826**, and **mAP@0.5 of 0.893**, demonstrating robust performance under visually sparse and snow-covered Nordic conditions.
 
@@ -63,7 +64,7 @@ Detected snow poles are initially localized **relative to the vehicle** by estim
 
 Experimental evaluation is performed using a **pretrained snow pole detection model** in combination with **ROS bag recordings containing synchronized LiDAR-derived images and GNSS measurements**. The dataset used for evaluation is publicly available on **Kaggle** [8].
 
-This integrated **GNSS–LiDAR fusion framework** enables accurate snow pole geolocation under harsh winter conditions and forms a reliable foundation for vehicle localization. Once validated in GNSS-available scenarios, the approach can be extended to support **odometry-based vehicle localization** in **GNSS-limited or GNSS-denied environments[1]**.
+This integrated **GNSS–LiDAR fusion framework** enables accurate snow pole geolocation under harsh winter conditions and forms a reliable foundation for vehicle localization. Once validated in GNSS-available scenarios, the approach can be extended to support **odometry-based vehicle localization[9]** in **GNSS-limited or GNSS-denied environments[1]**.
 
 
 
@@ -198,6 +199,37 @@ conda env update -f environment.yml --prune
 ```bash
 python --version
 ```
+---
+
+## Results 
+<img width="1490" height="212" alt="image" src="https://github.com/user-attachments/assets/4f02376c-5dc1-49ce-a5eb-6761c5353c5b" />
+
+
+**Fig. 1: Geolocalized Snow Poles: This image illustrates the position of snow poles as geolocated relative to the vehicle’s GNSS and LiDAR sensors, projected onto a 2D image for spatial reference..**
+
+<img width="1637" height="933" alt="image" src="https://github.com/user-attachments/assets/2ab03528-5511-4603-a130-b350c6095a77" />
+
+
+**Fig. 2: Visual quality analysis of snow pole geolocalization on QGIS: (a) Measured poles along the route, (b) Original vehicle GNSS path overlaid with measured poles, (c) Estimated poles along the vehicle GNSS path, and (d) Full route of the vehicle with both measured and estimated poles.**
+
+<img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/c13c219d-88ee-4c2c-a6f1-2c39a74fe616" />
+
+
+**Fig. 3: Histogram of error distances between measured and predicted pole locations, with the mean, median, and standard deviation highlighted.**
+
+**TABLE I: Summary of detected snow poles relative to the total number of measured poles at the test location.**
+
+<img width="600" height="150" alt="image" src="https://github.com/user-attachments/assets/f3a407d8-32c9-4ba3-b5fd-165aae8e61fc" />
+
+
+---
+## Demo Video of Snow Pole Geo-Localization Framework
+
+[![Demo Video](https://img.youtube.com/vi/MNGnOWTT25Q/maxresdefault.jpg)](https://youtu.be/MNGnOWTT25Q)
+
+***Click the image above to watch the demo on YouTube.  
+For better visualization of vehicle motion and localization updates, please play the video at **2× speed**.***
+
 ---
 ## Related Publications and Citation
 
