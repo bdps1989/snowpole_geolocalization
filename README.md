@@ -226,7 +226,7 @@ python --version
 ---
 ## Demo Video of Snow Pole Geo-Localization Framework
 
-[![Demo Video](https://img.youtube.com/vi/MNGnOWTT25Q/maxresdefault.jpg)](https://youtu.be/MNGnOWTT25Q)
+[![Demo Video](https://img.youtube.com/vi/5WBODlySPYE/maxresdefault.jpg)](https://youtu.be/5WBODlySPYE)
 
 ***Click the image above to watch the demo on YouTube.  
 For better visualization of vehicle motion and localization updates, please play the video at **2× speed**.***
