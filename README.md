@@ -247,8 +247,8 @@ If you use this code, dataset references, or methodological ideas, please cite t
 ### Conference Papers
 
 3. **Bavirisetti, D. P., Kiss, G. H., & Lindseth, F. (2024, July). A pole detection and geospatial localization framework using liDAR-GNSS data fusion. In 2024 27th International Conference on Information Fusion (FUSION) (pp. 1-8). IEEE.**
-4. **Bavirisetti, D. P. (2025). Extended evaluation of SnowPole detection for machine-perceivable infrastructure for Nordic winter conditions: A comparative study of object detection models. Available at SSRN 5386946.**
-5. **Bavirisetti, D. P. (2025). Enhancing vehicle navigation in GNSS-limited environments with georeferenced snow poles. In 2025 IEEE Symposium Series on Computational Intelligence (SSCI), Trondheim, Norway, 17-20 March 2025. IEEE. (Poster Presentation)**
+4. **Bavirisetti, D. P., Rafiq, M. I., Tabassum, S., Kiss, G. H., & Lindseth, F. (2025, September 18). Extended evaluation of SnowPole detection for machine-perceivable infrastructure for Nordic winter conditions: A comparative study of object detection models. In Proceedings of the FAIEME 2025 Conference, Stavanger, Norway. SSRN. https://doi.org/10.2139/ssrn.5386946**
+5. **Bavirisetti, D. P., Berget, G. E., Tabassum, S., Kiss, G. H., Arnesen, P., Seter, H., & Lindseth, F. (2025, March 17–20). Enhancing vehicle navigation in GNSS-limited environments with georeferenced snow poles [Poster presentation]. 2025 IEEE Symposium Series on Computational Intelligence (SSCI), Trondheim, Norway. (Poster Presentation)**
    
 ### Datasets
 6. **Bavirisetti, Durga Prasad; Kiss, Gabriel Hanssen ; Arnesen, Petter ; Seter, Hanne ; Tabassum, Shaira ; Lindseth, Frank  (2024), “SnowPole Detection: A Comprehensive Dataset for Detection and Localization Using LiDAR Imaging in Nordic Winter Conditions”, Mendeley Data, V2, [https://doi.org/10.17632/tt6rbx7s3h.2](https://doi.org/10.17632/tt6rbx7s3h.2)**
