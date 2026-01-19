@@ -129,6 +129,7 @@ A detailed and complete description of the hardware, operating system, software 
 
 SYSTEM_CONFIGURATION.txt
 
+---
 ## Data Description
 
 The dataset used in this repository consists of **real-world LiDAR and GNSS sensor data** collected along Norwegian highways, with a primary focus on the **E39 – Hemnekjølen test site in Norway**. This test site spans approximately **4.2 km** and includes **mountainous terrain, forested regions, and open landscapes**, making it particularly suitable for evaluating vehicle localization performance under **GNSS-limited conditions and harsh Nordic winter environments**.
