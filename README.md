@@ -244,7 +244,26 @@ python snow_pole_geolocalization.py
 The script loads LiDAR-derived images and GNSS measurements from the ROS bag file and produces geolocalized snow pole positions together with evaluation statistics.
 
 ---
+### 6.  Optional: Data Inspection and Visualization
 
+Before running the full pipeline, the ROS bag utilities provided in `rosbag_utils/` can be used to inspect the sensor data.
+
+Example commands:
+
+```bash
+python rosbag_utils/lidar_image_visualization.py
+python rosbag_utils/gnss_and_groundtruth_snowpole_visualization.py
+python rosbag_utils/range_image_to_pointcloud_visualization.py
+python rosbag_utils/realpointcloud_visualization.py
+```
+
+These utilities allow users to visualize:
+
+- LiDAR-derived images  
+- raw LiDAR point clouds  
+- GNSS trajectories  
+- alignment between GNSS paths and ground-truth snow poles
+  
 ## Reproducibility
 
 To ensure reproducibility of the experiments, this repository provides a fully specified Conda environment and system configuration.
