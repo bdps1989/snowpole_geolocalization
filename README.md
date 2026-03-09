@@ -184,34 +184,90 @@ To visualize and process various sensor data—such as **raw LiDAR point clouds*
 
 ---
 
-## Reproducibility
+---
 
-A Conda environment is provided to ensure full reproducibility of the experiments. The environment is explicitly configured using **Python 3.9.18** to maintain compatibility with all dependencies.
+## Software Execution Instructions
+
+This section provides **minimal instructions for installing dependencies and executing the SnowPole-GeoLoc framework**.  
+Details about datasets, visualization utilities, and experimental outputs are described in the **Data Description**, **Publicly Available Datasets**, and **Results** sections of this repository.
 
 ---
 
-### 1. Create the Conda Environment
+### 1. Clone the repository
 
-Create a new Conda environment with the required Python version:
+```bash
+git clone https://github.com/bdps1989/snowpole_geolocalization.git
+cd snowpole_geolocalization
+```
+
+---
+
+### 2. Create and activate the Conda environment
 
 ```bash
 conda create -n snowpole_geolocalization python=3.9.18 -y
-```
-### 2. Activate the Environment
-```text
 conda activate snowpole_geolocalization
-
 ```
-### 3. Install Dependencies
 
-Install all required packages using the provided environment.yml file:
+---
+
+### 3. Install dependencies
+
 ```bash
 conda env update -f environment.yml --prune
 ```
-### 4. Verify Installation
-```bash
-python --version
+
+---
+
+### 4. Download the evaluation dataset
+
+Download the ROS bag dataset from:
+
+https://doi.org/10.34740/KAGGLE/DSV/14311103
+
+Place the recommended ROS bag file in the repository directory:
+
 ```
+2024-02-28-12-59-51_no_unwanted_topics.bag
+```
+
+---
+
+### 5. Execute the snow pole geo-localization pipeline
+
+Run the main script:
+
+```bash
+python snow_pole_geolocalization.py
+```
+
+The script loads LiDAR-derived images and GNSS measurements from the ROS bag file and produces geolocalized snow pole positions together with evaluation statistics.
+
+---
+
+## Reproducibility
+
+To ensure reproducibility of the experiments, this repository provides a fully specified Conda environment and system configuration.
+
+The required software dependencies and package versions are defined in:
+
+```
+environment.yml
+```
+
+The experiments were executed using **Python 3.9.18** within a Conda-managed environment.  
+The steps required to create the environment and run the software are provided in the **Software Execution Instructions** section above.
+
+In addition, the file
+
+```
+SYSTEM_CONFIGURATION.txt
+```
+
+documents the hardware platform, operating system, and software toolchain used for the experiments.
+
+These resources allow other researchers to reproduce the snow pole geo-localization pipeline under comparable computational conditions.
+
 ---
 
 ## Results 
